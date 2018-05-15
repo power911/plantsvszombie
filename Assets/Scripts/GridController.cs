@@ -21,7 +21,9 @@ public class GridController : MonoBehaviour {
             for (int j = 0; j < _maxY; j++)
             {
                 GameObject obj = Instantiate(_gridObj[Random.Range(0,_gridObj.Length)], new Vector2((float)i - _maxX / 2, (float)j - _maxY / 2), Quaternion.identity,transform);
+                if(i == _maxX-1) { SpawnManager.Instance.EnemySpawnPoint.Add(obj); }
             }
         }
+        
     }
 }

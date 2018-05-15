@@ -10,7 +10,7 @@ public class GridElement : MonoBehaviour {
     {
         if (CanBuild && MainManager.Instance.CounterMoney>=withdraw)
         {
-            GameObject build = Instantiate(building, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, transform);
+            GameObject build = Instantiate(building, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,transform);
             CanBuild = false;
             MainManager.Instance.CounterMoney = -withdraw;
         }

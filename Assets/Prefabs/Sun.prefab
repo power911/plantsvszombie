@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4753367813270416}
   - component: {fileID: 212835386160019126}
-  - component: {fileID: 61580820648123986}
   - component: {fileID: 50674828424216434}
-  - component: {fileID: 114513582397185920}
+  - component: {fileID: 114839892091462410}
+  - component: {fileID: 58538137592793066}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947329501025072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.252111, y: -0.07003978, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61580820648123986
-BoxCollider2D:
+--- !u!58 &58538137592793066
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,19 +76,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1.77, y: 1.77}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7}
-  m_EdgeRadius: 0
---- !u!114 &114513582397185920
+  m_Radius: 0.32
+--- !u!114 &114839892091462410
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,10 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947329501025072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77fc8939ff20d624e9ad4c49efd82d27, type: 3}
+  m_Script: {fileID: 11500000, guid: bcec7f5be6c15c445b121734db3f84ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _add: 25
+  _bonus: 50
 --- !u!212 &212835386160019126
 SpriteRenderer:
   m_ObjectHideFlags: 1
