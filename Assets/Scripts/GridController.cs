@@ -9,7 +9,7 @@ public class GridController : MonoBehaviour {
     [SerializeField] private int _maxY;
     [SerializeField] private GameObject[] _gridObj;
 
-    private void Awake()
+    private void Start()
     {
         Generate();
     }
@@ -24,6 +24,5 @@ public class GridController : MonoBehaviour {
                 if(i == _maxX-1) { SpawnManager.Instance.EnemySpawnPoint.Add(obj); }
             }
         }
-        
     }
 }

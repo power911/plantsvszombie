@@ -8,6 +8,11 @@ public class OppositionSupport : Opposition {
     public override int Health{ get{ return _health;}
                                 set{_health += value; if (_health <= 0) { Destroy(gameObject); } }}
 
+    public override GameObject EnemyObject
+    {
+        set{ }
+    }
+
     private void Start()
     {
         StartCoroutine(Skill());
@@ -19,7 +24,7 @@ public class OppositionSupport : Opposition {
         while (gameObject != null)
         {
             GameObject obj = Instantiate(_classObj, transform.position, Quaternion.identity);
-            obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.position.x, transform.position.y + 5f), ForceMode2D.Impulse);
+            obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.position.x, transform.position.y + 5f), ForceMode2D.Force);
             yield return new WaitForSeconds(_repeatTime);
         }
     }

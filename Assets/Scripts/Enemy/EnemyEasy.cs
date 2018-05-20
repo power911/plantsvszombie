@@ -14,14 +14,22 @@ public class EnemyEasy : Enemy
         yield return null;
     }
     
-    public override IEnumerator Skill()
+    public override IEnumerator Skill(GameObject target)
     {
-        yield return null;
+        var obj = target.GetComponent<Opposition>();
+        while(target != null)
+        {
+           obj.Health = -1;
+           yield return new WaitForSeconds(_repiat);
+        }
     }
 
     private void Update()
     {
-        base.Move();
+        if (_target == null)
+        {
+            base.Move();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +42,11 @@ public class EnemyEasy : Enemy
             {
                 Destroy(gameObject);
             }
+        }
+        if (collision.GetComponent<Opposition>() != null)
+        {
+            _target = collision.gameObject;
+            StartCoroutine(Skill(_target));
         }
     }
 }

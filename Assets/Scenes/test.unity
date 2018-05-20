@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _counter: {fileID: 93291725}
-  _counterMoney: 0
+  _counterMoney: 5000
   _money: {fileID: 1947329501025072, guid: 1c10839e975abe2479a7f1dde10c8fab, type: 2}
 --- !u!4 &1661156612
 Transform:
