@@ -5,19 +5,15 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
     public static SpawnManager Instance;
 
-    public int Selected { set { _selected = value; _selectedObject = _oppositions[value]; } }
+    public int Selected { set { _selected = value; _selectedObject = _oppositions[value]; withdraw = _oppositionsPrice[value]; } }
 
-    public List<GameObject> EnemySpawnPoint = new List<GameObject>();
-
-                     private int _selected;
+                         private int _selected;
     [SerializeField] private float _repiatTimeBonus;
     [SerializeField] private GameObject _selectedObject;
     [SerializeField] private GameObject[] _oppositions;
     [SerializeField] private int[] _oppositionsPrice;
-    [SerializeField] private GameObject[] _enemy;
     [SerializeField] private GameObject _bonus;
-    
-
+    [SerializeField] private int withdraw;
     private void Awake()
     {
         if (!Instance)
@@ -33,34 +29,20 @@ public class SpawnManager : MonoBehaviour {
     private void Start()
     {
         StartCoroutine(SpawnBonus());
-        StartCoroutine(SpawnEnemy());
     }
 
-    private void Update()
+    public void OppositionSpawn(GridElement grid)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (grid.CanBuild && MainManager.Instance.CounterMoney >= withdraw && _selectedObject != null)
         {
-            MouseClick();
-        }
-
-    }
-
-    private void MouseClick()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        if (hit.transform.GetComponent<GridElement>() != null && _selectedObject != null)
-        {
-            hit.transform.GetComponent<GridElement>().Build(_selectedObject, _oppositionsPrice[_selected]);
+            GameObject build = Instantiate(_selectedObject, new Vector2(grid.gameObject.transform.position.x, grid.gameObject.transform.position.y), Quaternion.identity, grid.gameObject.transform);
+            grid.CanBuild = false;
+            MainManager.Instance.CounterMoney = -withdraw;
             _selectedObject = null;
         }
-        if (hit.transform.GetComponent<Bonus>() != null)
-        {
-            hit.transform.GetComponent<Bonus>().Click();
-            Destroy(hit.transform.gameObject);
-        }
     }
 
+           
     private IEnumerator SpawnBonus()
     {
         yield return new WaitForSeconds(5f);
@@ -70,15 +52,5 @@ public class SpawnManager : MonoBehaviour {
             yield return new WaitForSeconds(5f);
         }
     }
-
-    private IEnumerator SpawnEnemy()
-    {
-        yield return new WaitForSeconds(5f);
-        while (gameObject != null)
-        {
-            Instantiate(_enemy[Random.Range(0, _enemy.Length)], EnemySpawnPoint[Random.Range(0,EnemySpawnPoint.Count)].transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(5f);
-        }
-    }
-
+        
 }

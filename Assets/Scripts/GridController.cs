@@ -11,18 +11,14 @@ public class GridController : MonoBehaviour {
 
     private void Start()
     {
-        Generate();
-    }
-    
-    private void Generate()
-    {
         for (int i = 0; i < _maxX; i++)
         {
             for (int j = 0; j < _maxY; j++)
             {
-                GameObject obj = Instantiate(_gridObj[Random.Range(0,_gridObj.Length)], new Vector2((float)i - _maxX / 2, (float)j - _maxY / 2), Quaternion.identity,transform);
-                if(i == _maxX-1) { SpawnManager.Instance.EnemySpawnPoint.Add(obj); }
+                GameObject obj = Instantiate(_gridObj[Random.Range(0, _gridObj.Length)], new Vector2((float)i - _maxX / 2, (float)j - _maxY / 2), Quaternion.identity, transform);
+                if (i == _maxX - 1) { SpawnEnemyManager.Instance.EnemySpawnPoint.Add(obj); }
             }
         }
     }
+    
 }

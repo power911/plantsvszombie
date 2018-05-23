@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    [SerializeField] private int _damage;
-    [SerializeField] private float _speed;
+    [SerializeField] protected int _damage;
+    [SerializeField] protected float _speed;
+    [SerializeField] protected bool _destroy;
+    
+    public bool DestroyObj { get { return _destroy; } }
 
-    public Bullet(int damage, float speed)
-    {
-        _damage = damage;
-        _speed = speed;
-    }
     private void Start()
     {
         Destroy(gameObject, 6.5f);

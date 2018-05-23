@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class GridElement : MonoBehaviour {
+public class GridElement : MonoBehaviour , IPointerDownHandler {
+
+    [SerializeField] private GridElement _grid;
 
     public bool CanBuild = true;
-
-    public void Build(GameObject building, int withdraw)
+    
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (CanBuild && MainManager.Instance.CounterMoney>=withdraw)
-        {
-            GameObject build = Instantiate(building, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,transform);
-            CanBuild = false;
-            MainManager.Instance.CounterMoney = -withdraw;
-        }
+        SpawnManager.Instance.OppositionSpawn(_grid);
     }
 }

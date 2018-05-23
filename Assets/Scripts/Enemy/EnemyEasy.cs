@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EnemyEasy : Enemy
 {
+    private void Start()
+    {
+        MainManager.Instance.EnemySlider.value += (MainManager.Instance.EnemySlider .maxValue / SpawnEnemyManager.Instance.RepleyCounter) / (SpawnEnemyManager.Instance.Action.Types.Length*2);
+    }
+
     public override float MoveSpeed
     {
         get; set;
     }
-
-    public override IEnumerator GiveDamage()
-    {
-        yield return null;
-    }
-    
+        
     public override IEnumerator Skill(GameObject target)
     {
         var obj = target.GetComponent<Opposition>();
@@ -37,7 +37,10 @@ public class EnemyEasy : Enemy
         if(collision.GetComponent<Bullet>() != null)
         {
             _health--;
-            Destroy(collision.gameObject);
+            if (collision.GetComponent<Bullet>().DestroyObj)
+            {
+                Destroy(collision.gameObject);
+            }
             if (_health <= 0)
             {
                 Destroy(gameObject);

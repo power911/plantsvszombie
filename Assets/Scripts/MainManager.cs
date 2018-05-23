@@ -10,6 +10,7 @@ public class MainManager : MonoBehaviour
     public int CounterMoney { get { return _counterMoney; }
                               set { _counterMoney += value; _counter.text = _counterMoney.ToString(); } }
 
+    public Slider EnemySlider;
    
     [SerializeField] private Text _counter;
     [SerializeField] private int _counterMoney;

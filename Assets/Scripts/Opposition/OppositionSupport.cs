@@ -8,11 +8,7 @@ public class OppositionSupport : Opposition {
     public override int Health{ get{ return _health;}
                                 set{_health += value; if (_health <= 0) { Destroy(gameObject); } }}
 
-    public override GameObject EnemyObject
-    {
-        set{ }
-    }
-
+    
     private void Start()
     {
         StartCoroutine(Skill());
