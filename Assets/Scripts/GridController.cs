@@ -5,20 +5,26 @@ using UnityEditor;
 
 public class GridController : MonoBehaviour {
 
-    [SerializeField] private int _maxX;
-    [SerializeField] private int _maxY;
-    [SerializeField] private GameObject[] _gridObj;
+    public  int MaxX;
+    public int MaxY;
+    public GameObject[] GridChoose;
+    public GameObject[,] GridObject;
+    public int[,] GridNumber;
 
     private void Start()
     {
-        for (int i = 0; i < _maxX; i++)
+        GridNumber = new int[MaxX, MaxY];
+        GridObject = new GameObject[MaxX, MaxY];
+        Debug.Log(GridNumber.Length);
+        for (int i = 0; i < MaxX; i++)
         {
-            for (int j = 0; j < _maxY; j++)
+            for (int j = 0; j < MaxY; j++)
             {
-                GameObject obj = Instantiate(_gridObj[Random.Range(0, _gridObj.Length)], new Vector2((float)i - _maxX / 2, (float)j - _maxY / 2), Quaternion.identity, transform);
-                if (i == _maxX - 1) { SpawnEnemyManager.Instance.EnemySpawnPoint.Add(obj); }
+                GameObject obj = Instantiate(GridChoose[Random.Range(0, GridChoose.Length)], new Vector2((float)i - MaxX / 2, (float)j - MaxY / 2), Quaternion.identity, transform);
+                GridObject[i, j] = obj;
+                Debug.Log(obj + " " + i + " " + j);
+                if (i == MaxX - 1) { SpawnEnemyManager.Instance.EnemySpawnPoint.Add(obj); }
             }
         }
     }
-    
 }

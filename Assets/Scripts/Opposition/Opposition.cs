@@ -8,7 +8,7 @@ public abstract class Opposition : MonoBehaviour
     [SerializeField] protected int _repeatTime;
     [SerializeField] protected GameObject _classObj;
     [SerializeField] protected GameObject _enemy;
-    public  GameObject EnemyObject { set { _enemy = value; StartCoroutine(Skill()); } }
+    public  GameObject EnemyObject { get { return _enemy; } set { _enemy = value; StartCoroutine(Skill()); } }
     public abstract int Health { get; set; }
     public abstract IEnumerator Skill();
     

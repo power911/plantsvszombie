@@ -10,7 +10,10 @@ public class Detector : MonoBehaviour {
     {
         if(collision.GetComponent<Enemy>() != null)
         {
-            _opposition.GetComponent<Opposition>().EnemyObject = collision.gameObject;
+            if (_opposition.EnemyObject == null)
+            {
+                _opposition.EnemyObject = collision.gameObject;
+            }
         }
     }
 
