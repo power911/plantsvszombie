@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour {
     public static SpawnManager Instance;
 
     public int Selected { set { _selected = value; _selectedObject = _oppositions[value]; withdraw = _oppositionsPrice[value]; } }
+    public GameObject ReturnGO { get { return _selectedObject; } }
 
                          private int _selected;
     [SerializeField] private float _repiatTimeBonus;
