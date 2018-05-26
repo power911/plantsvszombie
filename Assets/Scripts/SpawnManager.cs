@@ -40,6 +40,7 @@ public class SpawnManager : MonoBehaviour {
             grid.CanBuild = false;
             MainManager.Instance.CounterMoney = -withdraw;
             _selectedObject = null;
+            GridController.Instance.AntiIllunation();
         }
     }
 

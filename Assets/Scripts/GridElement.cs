@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public SpriteRenderer Sprite;
-
-    [SerializeField] private GridElement _grid;
-   
+    
     public void Grid(int x, int y)
     {
         X = x;
@@ -21,7 +19,7 @@ public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        SpawnManager.Instance.OppositionSpawn(_grid);
+        SpawnManager.Instance.OppositionSpawn(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +32,6 @@ public class GridElement : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+        GridController.Instance.AntiIllunation();
     }
 }
