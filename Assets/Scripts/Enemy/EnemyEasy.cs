@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyEasy : Enemy
 {
+    
     private void Start()
     {
         MainManager.Instance.EnemySlider.value += (MainManager.Instance.EnemySlider .maxValue / SpawnEnemyManager.Instance.RepleyCounter) / (SpawnEnemyManager.Instance.Action.Types.Length*2);
@@ -20,6 +21,7 @@ public class EnemyEasy : Enemy
         while(target != null)
         {
            obj.Health = -1;
+            _anim.SetBool("Moved", true);
            yield return new WaitForSeconds(_repiat);
         }
     }
@@ -29,6 +31,7 @@ public class EnemyEasy : Enemy
         if (_target == null)
         {
             base.Move();
+            _anim.SetBool("Moved", false);
         }
     }
 

@@ -41,13 +41,10 @@ public class GridController : MonoBehaviour {
 
     public void IlluminationGrid(int x,int y)
     {
-        for (; y < MaxY; y++)
-        {
-            for (; x < MaxX; x++)
-            {
-                GridObject[x, y].GetComponent<SpriteRenderer>().color = new Color(0, 255, 255, 255);
-            }
-        }
+      for (; x < MaxX; x++)
+      {
+         GridObject[x, y].GetComponent<SpriteRenderer>().color = new Color(0, 255, 255, 255);
+      }
     }
     public void AntiIllunation()
     {

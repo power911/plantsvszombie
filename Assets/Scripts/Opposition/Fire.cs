@@ -46,6 +46,7 @@ public class Fire : MonoBehaviour
     private IEnumerator LifeController()
     {
         yield return new WaitForSeconds(15f);
+        GetComponentInParent<GridElement>().CanBuild = true;
         Destroy(gameObject);
     }
 }

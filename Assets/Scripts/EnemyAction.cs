@@ -7,5 +7,9 @@ public class EnemyAction:MonoBehaviour {
 }
 public enum Action
 {
-    EasyEnemy_OMON_with_out_cap = 0,
+    Easy_Simple = 0,
+    Easy_Siple_Helm = 1,
+    Easy_Green = 2,
+    Easy_Green_Helm = 3,
+    Easy_Shield = 4
 }

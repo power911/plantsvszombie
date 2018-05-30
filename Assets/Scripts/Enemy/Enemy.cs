@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour {
     [SerializeField] protected GameObject _target;
     [SerializeField] protected float _repiat;
     [SerializeField] protected float _sliderValue;
+    [SerializeField] protected Animator _anim;
     public int Health { get { return _health; } set { _health += value; if (_health <= 0) { Destroy(gameObject); } } }
     public abstract float MoveSpeed { get; set; }
     public abstract IEnumerator Skill(GameObject target);
